@@ -1,0 +1,148 @@
+Here’s your **complete project outline** for **AutoClient Navigator**, tailored for a hackathon or early-stage product build — clean, structured, and production-oriented.
+
+---
+
+# 💼 Project: **AutoClient Navigator**
+
+> An autonomous AI agent that scrapes client data, generates tailored proposals, and predicts deal success — cutting down hours of manual work for enterprise sales teams.
+
+---
+
+## 🧠 Problem
+
+Enterprise sales and marketing teams spend hours:
+
+* Researching companies
+* Personalizing proposals
+* Following up manually
+  This manual work doesn’t scale and reduces focus on actual selling.
+
+---
+
+## 🚀 Solution
+
+**AutoClient Navigator** is an **autonomous agent** that:
+
+* Scrapes client websites and LinkedIn pages
+* Summarizes company info
+* Generates a tailored pitch or proposal
+* Predicts response likelihood based on past deals (via RAG)
+* Auto-schedules follow-ups or fills CRM records
+
+All from just a list of client names or URLs.
+
+---
+
+## 🎯 Use Cases
+
+* SaaS or B2B teams doing outbound marketing
+* Partnership proposal automation
+* Sales intelligence for SDRs
+* HR doing cold outreach or hiring campaigns
+
+---
+
+## 🧱 Tech Stack
+
+| Layer                | Stack/Tool                                                 |
+| -------------------- | ---------------------------------------------------------- |
+| Frontend             | Next.js, Tailwind CSS, Shadcn UI                           |
+| State Management     | TanStack Query (React Query), Zustand                      |
+| Form Validation      | React Hook Form + Zod                                      |
+| Authentication       | BetterAuth                                                 |
+| LLM Agent Framework  | Compound Beta + Groq (LLaMA 3), Fetch.AI (agent execution) |
+| Vector Database      | Qdrant (RAG: match against similar past deals/proposals)   |
+| Backend API          | FastAPI (Python)                                           |
+| Primary Database     | NeonDB (PostgreSQL)                                        |
+| Calendar Integration | Cal.com MCP                                                |
+| CRM Integration      | HubSpot MCP                                                |
+| Deployment           | Vultr Cloud (API + Agents), Vercel (Frontend - optional)   |
+
+---
+
+## 📦 Project Structure (Monorepo Style)
+
+```bash
+autoclient-navigator/
+├── apps/
+│   ├── frontend/        # Next.js frontend
+│   └── backend/         # FastAPI backend + agent logic
+├── packages/
+│   ├── agents/          # Compound/Fetch autonomous agents
+│   ├── utils/           # Shared utilities
+│   ├── vector-db/       # Qdrant setup and query logic
+│   └── auth/            # BetterAuth configuration
+├── scripts/             # Scraper tools, embedding jobs
+├── infra/               # Vultr deployment scripts
+├── .env.example         # Env vars
+└── README.md
+```
+
+---
+
+## 🧭 App Flow (Frontend UI / Pages)
+
+| Page           | Description                                |
+| -------------- | ------------------------------------------ |
+| `/login`       | Login with BetterAuth                      |
+| `/dashboard`   | Upload client URLs, see agent history      |
+| `/run`         | Launch a new agent job                     |
+| `/result/[id]` | View summary, pitch, and follow-up plan    |
+| `/settings`    | Manage API keys, CRM/Calendar integrations |
+
+---
+
+## 🤖 Agent Workflow (Autonomous Pipeline)
+
+```plaintext
+[Input: List of client URLs or names]
+      ↓
+1. Scrape company website + LinkedIn
+2. Summarize key info (what they do, target audience, recent updates)
+3. Embed and match with similar past deals (Qdrant + RAG)
+4. Generate tailored proposal or email
+5. Predict success likelihood (based on RAG + heuristics)
+6. Output: pitch + follow-up schedule + CRM fill + optional calendar booking
+```
+
+---
+
+## 📈 MVP Features
+
+* [x] Upload CSV or paste URLs
+* [x] Web scraping + LinkedIn scraping
+* [x] Summarization via LLM
+* [x] Proposal/email generation
+* [x] Vector search for past deal matches
+* [x] Success likelihood prediction
+* [x] Download or copy proposal/email
+* [x] HubSpot autofill
+* [x] Cal.com booking link generation
+* [x] Saved runs + dashboard view
+
+---
+
+## ⚙️ AI + Agent System Flow
+
+```plaintext
+User Upload → Agent Step 1: Scraping → Step 2: Summarizing → Step 3: Vector Matching (RAG)
+ → Step 4: Draft Proposal → Step 5: Predict → Output (Email + Summary + Actions)
+```
+
+---
+
+## 🔐 Auth & Roles
+
+* **BetterAuth** with email + OAuth login
+* Optional: Admin role for managing agent settings and limits
+
+---
+
+## 🧪 Example Use Case Demo
+
+> Upload a list of 5 fintech startups →
+> Get 5 tailored emails with company summaries + sales pitch outlines + success score →
+> Auto-book Calendly link or fill CRM.
+
+---
+

@@ -1,0 +1,65 @@
+# 🧱 Tech Stack Overview – AutoClient Navigator
+
+> AutoClient Navigator is an AI-powered autonomous agent platform that scrapes client data, generates personalized proposals, and predicts deal outcomes — optimized for modern enterprise sales teams.
+
+---
+
+## 🖥️ Frontend
+
+| Tool                | Purpose                                                  |
+|---------------------|----------------------------------------------------------|
+| **Next.js**         | React framework for routing, SSR/ISR, and fast dev       |
+| **Tailwind CSS**    | Utility-first CSS for responsive, clean UI               |
+| **Shadcn UI**       | Modern UI components for accessible and styled interfaces|
+| **Zustand**         | Lightweight global state management                      |
+| **TanStack Query**  | Async data fetching, caching, and mutation handling      |
+| **TanStack Table**  | Display structured outputs like proposal history         |
+| **React Hook Form** | Forms and inputs with advanced state control             |
+| **Zod**             | Type-safe validation integrated with forms               |
+| **BetterAuth**      | Secure auth via email and OAuth (Next.js SDK)            |
+
+---
+
+## ⚙️ Backend
+
+| Tool              | Purpose                                                   |
+|-------------------|-----------------------------------------------------------|
+| **FastAPI (Python)** | Backend API layer serving agents, APIs, and data       |
+| **Compound Beta** | Structured agent execution framework                      |
+| **Groq (LLaMA 3)**| Ultra-fast LLM inference for proposal generation          |
+| **Fetch.ai**      | Autonomy + planning agent logic                           |
+
+---
+
+## 🧠 AI & Vector Memory
+
+| Tool            | Purpose                                                     |
+|------------------|-------------------------------------------------------------|
+| **Qdrant**       | Vector DB for semantic RAG (Retrieval-Augmented Generation) |
+| **RAG Engine**   | Matches current clients with similar past deals             |
+| **Embeddings**   | LLaMA-generated or external, stored in Qdrant for retrieval |
+
+---
+
+## 🗃️ Data & Integrations
+
+| Tool             | Purpose                                                    |
+|------------------|------------------------------------------------------------|
+| **NeonDB (PostgreSQL)** | Serverless DB for agent logs, users, client data     |
+| **HubSpot MCP**  | CRM integration to autofill sales data                     |
+| **Cal.com MCP**  | Meeting scheduling from within proposal flow               |
+| **Vultr Cloud**  | Deployment of backend API, agents, and inference pipelines |
+| **Vercel** *(optional)* | Hosting frontend for global reach + CDN             |
+
+---
+
+## 🧩 Architecture Snapshot
+
+```plaintext
+[Frontend: Next.js + Shadcn + TanStack]
+      ↓ (API)
+[Backend: FastAPI + Compound + Fetch.ai]
+      ├─ LLM Inference via Groq (LLaMA 3)
+      ├─ Vector Matching via Qdrant
+      ├─ Data via NeonDB
+      └─ Integrations: HubSpot, Cal.com, BetterAuth

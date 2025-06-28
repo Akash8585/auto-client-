@@ -1,0 +1,210 @@
+Absolutely. Below is the **complete and updated Product Requirement Document (PRD)** for your hackathon project **AutoClient Navigator**, reflecting the use of:
+
+* ✅ **Bun** for runtime & dev tooling
+* ✅ **TypeScript** for frontend, backend, and shared packages
+* ✅ **Drizzle ORM** for type-safe NeonDB access
+* ✅ Updated file structure, stack, and step-by-step plan
+
+---
+
+# 🧾 Product Requirement Document – AutoClient Navigator
+
+### 📅 Date: June 2025
+
+### 🛠️ Tech Stack: Bun, TypeScript, Next.js, Drizzle, FastAPI, Groq, Qdrant, NeonDB
+
+### 👨‍💻 Team: \[Your Team Name]
+
+---
+
+## 🚀 1. Product Overview
+
+**AutoClient Navigator** is an autonomous agentic web platform that helps enterprise sales/marketing teams automate their outreach by:
+
+* Scraping client data from websites & LinkedIn
+* Summarizing company info
+* Matching with past successful clients (via vector search)
+* Generating tailored pitch proposals or emails
+* Predicting deal success likelihood
+* Booking meetings or filling CRM records
+
+This AI-powered pipeline removes hours of manual grunt work and enables smarter, faster selling.
+
+---
+
+## 🎯 2. Goals
+
+| Goal                          | Details                                                            |
+| ----------------------------- | ------------------------------------------------------------------ |
+| Automate personalization      | Replace manual client research and email crafting                  |
+| Enterprise-ready workflow     | Integrations with CRMs, calendars, and email                       |
+| Modular, agentic architecture | AI agent performs multi-step planning & execution                  |
+| Developer experience          | Modern stack with type safety, fast dev cycle (Bun + Drizzle + TS) |
+
+---
+
+## 🧱 3. Tech Stack
+
+### 🖥 Frontend
+
+| Tool                  | Purpose                         |
+| --------------------- | ------------------------------- |
+| Next.js 14            | React framework with App Router |
+| Tailwind CSS          | Utility-first styling           |
+| Shadcn UI             | UI components                   |
+| TanStack Query        | Data fetching and cache         |
+| Zustand               | Local/global state              |
+| React Hook Form + Zod | Form handling & validation      |
+| BetterAuth            | Authentication (email + OAuth)  |
+
+### ⚙ Backend
+
+| Tool             | Purpose                            |
+| ---------------- | ---------------------------------- |
+| FastAPI (Python) | Agent orchestration + API routes   |
+| Compound Beta    | Autonomous multi-step agent        |
+| Groq (LLaMA 3)   | LLM for summarization & generation |
+| Fetch.ai         | Autonomous reasoning agents        |
+
+### 🧠 Data Layer
+
+| Tool         | Purpose                                    |
+| ------------ | ------------------------------------------ |
+| NeonDB       | Serverless Postgres DB                     |
+| Drizzle ORM  | Type-safe schema, migrations, queries      |
+| Qdrant       | Vector DB for client similarity search     |
+| RAG Pipeline | Retrieve past deals and augment generation |
+
+### 🔌 Integrations
+
+| Tool        | Purpose                                  |
+| ----------- | ---------------------------------------- |
+| Cal.com MCP | Auto-meeting scheduling                  |
+| HubSpot MCP | Auto-fill CRM pipeline data              |
+| Bun         | JS runtime, test runner, package manager |
+
+---
+
+## 🗂️ 4. File Structure (Monorepo)
+
+```bash
+autoclient-navigator/
+├── apps/
+│   ├── frontend/                # Next.js 14 frontend
+│   └── backend/                 # FastAPI backend
+├── packages/
+│   ├── db/                      # Drizzle schema + Neon client
+│   │   ├── schema/
+│   │   ├── index.ts
+│   │   └── migrations/
+│   ├── auth/                    # BetterAuth config
+│   ├── llm/                     # Prompt templates + Groq clients
+│   ├── embeddings/              # Qdrant vector utils
+├── scripts/
+│   ├── embed.ts                 # Embedding CLI
+│   ├── migrate.ts               # Drizzle migration CLI
+│   └── run-agent.ts             # CLI to trigger agents
+├── infra/                       # Docker, Vultr deploy scripts
+├── drizzle.config.ts
+├── bunfig.toml
+├── .env.example
+└── README.md
+```
+
+---
+
+## 🧠 5. Functional Features
+
+### 📥 Input
+
+* Upload client URLs or CSV
+* Scrape website and LinkedIn
+* Save metadata to DB
+
+### 🧠 Agent Pipeline
+
+* Summarize company info via LLM
+* Embed + store in Qdrant
+* Perform RAG against past deals
+* Generate tailored pitch proposal
+* Score response likelihood
+
+### 📤 Output
+
+* Proposal: downloadable, editable
+* CRM: HubSpot auto-fill
+* Calendar: generate Cal.com booking
+* Store results in NeonDB
+
+---
+
+## 🔐 6. Auth & Access
+
+* Use **BetterAuth** for email/OAuth
+* Sessions stored via secure tokens
+* Roles: Basic (free), Pro (future-ready)
+
+---
+
+## 💻 7. Frontend Guidelines
+
+* Use `app/` directory with App Router
+* All queries via TanStack
+* Forms use Zod + React Hook Form
+* UI: Dashboard layout, card view, tabbed history
+* Keep styles atomic with Tailwind
+
+---
+
+## ⚙ 8. Backend Guidelines
+
+* Python with FastAPI async routes
+* Agent logic modular:
+
+  * `scraper.py`
+  * `summarizer.py`
+  * `rag.py`
+  * `proposer.py`
+* Agents orchestrated via `/api/agent/run`
+* Output stored in Neon via Drizzle-compatible schema
+
+---
+
+## 🧩 9. Database Guidelines (Drizzle ORM)
+
+* Tables: `users`, `agent_runs`, `proposals`, `embeddings`, `crm_links`
+* Use `drizzle-kit` for migrations
+* Use `@neondatabase/serverless` adapter for serverless access
+* Embeddings handled separately via `Qdrant`
+
+---
+
+## 🧪 10. 50-Step Implementation Plan
+
+Refer to [previous message](https://chat.openai.com/share/50-step-implementation-plan) — all steps are now fully Bun + Drizzle compatible.
+
+Highlights:
+
+* Bun CLI for embedding and migrations
+* Modular agents for scraping, summarization, and proposal generation
+* CRM/Cal.com sync through backend integrations
+* Type-safe data management via Drizzle ORM
+
+---
+
+## 📦 11. Deliverables
+
+* 🔐 Authenticated web app
+* 🤖 Fully working multi-step AI agent
+* 📄 Dashboard with proposal history
+* 🔗 CRM + Calendar integration
+* 🧠 RAG-based personalization engine
+* 🐳 Deployed via Vultr (backend) + Vercel/Vultr (frontend)
+* 📼 Demo script and video
+
+---
+
+## 📈 12. Stretch Goals (if time permits)
+
+* Real-time run status via WebSockets
+* Proposal versioning
